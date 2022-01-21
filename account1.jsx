@@ -23,12 +23,15 @@ const Account = () => {
   };
   const handleSubmit = event => {
         event.preventDefault();
-
-    if(!isDeposit && Number(transactionState) > Number(accountState)) alert('not enough funds')
+    if(Number(transactionState) <= 0) alert('negative values not allowed');
     else {
-      let newTotal = isDeposit ? Number(accountState) + Number(transactionState) : Number(accountState) - Number(transactionState);
-      setAccountState(newTotal);
-    }
+      if(!isDeposit && Number(transactionState) > Number(accountState)) alert('not enough funds')
+      else {
+        let newTotal = isDeposit ? Number(accountState) + Number(transactionState) : Number(accountState) - Number(transactionState);
+        setAccountState(newTotal);
+      }
+    } 
+
 
   };
 
